@@ -77,7 +77,7 @@ import {
   DEFAULT_DYNAMIC_SIZING,
   DEFAULT_ACCESSIBLE,
   DEFAULT_ACCESSIBILITY_LABEL,
-  DEFAULT_ACCESSIBILITY_ROLE
+  DEFAULT_ACCESSIBILITY_ROLE,
 } from './constants';
 import type { BottomSheetMethods, Insets } from '../../types';
 import type { BottomSheetProps, AnimateToPositionType } from './types';
@@ -1199,10 +1199,7 @@ const BottomSheetComponent = forwardRef<BottomSheet, BottomSheetProps>(
       }
 
       return {
-        height: animate({
-          point: animatedContentHeightMax.value,
-          configs: _providedAnimationConfigs,
-        }),
+        height: animatedContentHeightMax.value,
       };
     }, [animatedContentHeightMax, enableDynamicSizing, animatedContentHeight]);
     const contentContainerStyle = useMemo(
