@@ -6,7 +6,7 @@ import React, {
   memo,
   useEffect,
 } from 'react';
-import { Platform } from 'react-native';
+import { Dimensions, Platform } from 'react-native';
 import invariant from 'invariant';
 import Animated, {
   useAnimatedReaction,
@@ -82,6 +82,8 @@ import {
 import type { BottomSheetMethods, Insets } from '../../types';
 import type { BottomSheetProps, AnimateToPositionType } from './types';
 import { styles } from './styles';
+
+const ScreenHeight = Dimensions.get('screen').height;
 
 Animated.addWhitelistedUIProps({
   decelerationRate: true,
@@ -220,7 +222,7 @@ const BottomSheetComponent = forwardRef<BottomSheet, BottomSheetProps>(
       return closedPosition;
     }, [$modal, detached, bottomInset]);
     const animatedSheetHeight = useDerivedValue(
-      () => animatedContainerHeight.value - animatedHighestSnapPoint.value
+      () => ScreenHeight //animatedContainerHeight.value - animatedHighestSnapPoint.value // fix for sporadic measurement error, mainly on iOS
     );
     const animatedCurrentIndex = useReactiveSharedValue(
       animateOnMount ? -1 : _providedIndex
