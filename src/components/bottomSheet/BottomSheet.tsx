@@ -110,6 +110,7 @@ const BottomSheetComponent = forwardRef<BottomSheet, BottomSheetProps>(
       enablePanDownToClose = DEFAULT_ENABLE_PAN_DOWN_TO_CLOSE,
       enableDynamicSizing = DEFAULT_DYNAMIC_SIZING,
       overDragResistanceFactor = DEFAULT_OVER_DRAG_RESISTANCE_FACTOR,
+      onBeforeHandlePan = () => {},
 
       // styles
       style: _providedStyle,
@@ -1105,6 +1106,7 @@ const BottomSheetComponent = forwardRef<BottomSheet, BottomSheetProps>(
         stopAnimation,
         setScrollableRef,
         removeScrollableRef,
+        onBeforeHandlePan,
       }),
       [
         animatedIndex,
@@ -1146,6 +1148,7 @@ const BottomSheetComponent = forwardRef<BottomSheet, BottomSheetProps>(
         removeScrollableRef,
         animateToPosition,
         stopAnimation,
+        onBeforeHandlePan,
       ]
     );
     const externalContextVariables = useMemo(
@@ -1665,6 +1668,7 @@ const BottomSheetComponent = forwardRef<BottomSheet, BottomSheetProps>(
                   animatedPosition={animatedPosition}
                   handleHeight={animatedHandleHeight}
                   enableHandlePanningGesture={enableHandlePanningGesture}
+                  onBeforeHandlePan={onBeforeHandlePan}
                   enableOverDrag={enableOverDrag}
                   enablePanDownToClose={enablePanDownToClose}
                   overDragResistanceFactor={overDragResistanceFactor}
